@@ -22,7 +22,6 @@ $(document).ready(function() {
         passwordInput.val("");
     });
 
-
     function loginStudent(email, password) {
         if (emailInput === Student.user_id) {
             $.post("/api/students", {
