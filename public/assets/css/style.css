@@ -1,0 +1,29 @@
+body {
+    background-image: url(../images/main.png);
+    font-family: 'Poiret One', cursive;
+}
+
+header {
+    background-color: darkslategray;
+    color: white;
+    margin-bottom: 50px;
+}
+
+#brand {
+    font-size: 32px;
+}
+
+.jumbotron {
+    margin-top: 50px;
+    border-radius: 25px;
+    background-color: darkslategray;
+    color: white;
+}
+
+#signupModal {
+    color: black;
+}
+
+#exampleModal {
+    color: black;
+}
