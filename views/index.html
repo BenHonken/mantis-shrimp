@@ -17,10 +17,10 @@
 
         <div class="container">
 
-            <div class="jumbotron">
+            <div class="text-center jumbotron">
                 <h1>Mantis Shrimp Tutoring Service <img src="../public/assets/images/shrimp.png" class="img-responsive" alt="shrimp" id="shrimp"></h1>
 
-                <br/>
+                <hr>
 
                 <u><h2>About Us</h2></u>
 
@@ -39,12 +39,14 @@
 
                 <p>Convinced? Start your new journey with Mantis Shrimp today!</p>
 
+                <hr>
+
                 <div class="row">
 
-                    <div class="col-md-4">
+                    <div class="text-center col-md-4">
 
                         <!-- Button trigger modal -->
-                        <button class="btn btn-primary" data-target="#signupModal" data-toggle="modal" type="button">
+                        <button class="btn btn-primary" id="signupButton" data-target="#signupModal" data-toggle="modal" type="button">
                             Signup
                         </button>
 
@@ -97,7 +99,7 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4">
+                    <div class="text-center col-md-4">
 
                         Already studying with us?
 
@@ -135,11 +137,16 @@
                         </div>
                     </div>
 
-                    <div class="col-md-4"><a href="store.html"><button class="btn btn-primary">Store</button></a></div>
+                    <div class="text-center col-md-4"><a href="store.html"><button class="btn btn-primary">Store</button></a></div>
 
                 </div> <!--Jumbotron-->
             </div> <!--Container-->
 
         </div>
+
+        <script src="../public/assets/js/signup.js"></script>
+        <script src="../public/assets/js/login.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     </body>
 </html>
