@@ -1,5 +1,3 @@
-// Verify login
-// Verify admin role
 // Two links, one for logs and one for users
 // Load page with all logs, include created date, maybe build in sorting options
 // Clicking the user link will reload the page using jQuery and create a list of all users
