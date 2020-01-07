@@ -1,6 +1,7 @@
 body {
     background-image: url(../images/main.png);
     font-family: 'Poiret One', cursive;
+    font-size: 20px;
 }
 
 header {
@@ -11,6 +12,10 @@ header {
 
 #brand {
     font-size: 32px;
+}
+
+hr {
+    background-color: white;
 }
 
 .jumbotron {
@@ -27,3 +32,19 @@ header {
 #exampleModal {
     color: black;
 }
+
+a:link {
+    color: white;
+  }
+  
+  a:visited {
+    color: white;
+  }
+
+  a:hover {
+    color: white;
+  }
+  
+  a:active {
+    color: white;
+  }
