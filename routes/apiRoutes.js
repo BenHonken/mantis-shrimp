@@ -91,4 +91,23 @@ module.exports = function(app) {
             res.json(dbExample);
         });
     });
+    // UPDATE ROUTES
+    app.put("/api/student_hours/", function(req, res) {
+        let updateStudent = {
+            id: req.body.id,
+            hours: req.body.hours
+          }
+        db.Students.update(updateStudent, {where:{id: req.body.id}}).then(function (result) {
+            return res.json(result);
+        });
+    })
+    app.put("/api/tutor_hours/", function(req, res) {
+        let updateTutor = {
+            id: req.body.id,
+            hours: req.body.hours
+          }
+        db.Tutors.update(updateTutor, {where:{id: req.body.id}}).then(function (result) {
+            return res.json(result);
+        });
+    })
 };
