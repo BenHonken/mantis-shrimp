@@ -29,6 +29,50 @@ module.exports = function(app) {
             res.json(dbAdmin);
         });
     });
+    app.get("/api/tutor_data", function(req, res) {
+        db.Users.findAll({
+            where: {
+                id: req.user.id
+            }
+        }).then(function(dbTutor) {
+            res.json(dbTutor);
+        });
+    });
+    app.get("/api/get_student_names", function(req, res) {
+        db.Students.findAll({
+            where: {
+                tutor_id: req.user.id
+            }
+        }).then(function(dbStudents) {
+            for(i=0; i<dbStudents.length; i++){
+                db.Users.findALL({
+                    where:{
+                        id: user_id
+                    }
+                })
+            }
+        }).then(function(dbUsers){
+            res.json(dbUsers)
+        });
+    });
+    app.get("/api/get_student_hours", function(req, res) {
+        db.Students.findAll({
+            where: {
+                tutor_id: req.user.id
+            }
+        }).then(function(dbStudents) {
+            res.json(dbStudents);
+        });
+    });
+    app.get("/api/get_my_tutor_logs", function(req, res) {
+        db.Logs.findAll({
+            where: {
+                tutor_user_id: req.user.id
+            }
+        }).then(function(dbLogs) {
+            res.json(dbLogs);
+        });
+    });
 
     // POST ROUTES
     app.post("/api/store", function(req, res) {
@@ -36,7 +80,11 @@ module.exports = function(app) {
             res.json(dbProducts);
         });
     });
-
+    app.post("/api/new_log", function(req, res) {
+        db.Log.create(req.body).then(function(dbLogs) {
+            res.json(dbLogs);
+        });
+    });
     // DELETE ROUTES
     app.delete("/api/examples/:id", function(req, res) {
         db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
