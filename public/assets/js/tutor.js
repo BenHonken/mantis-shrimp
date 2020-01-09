@@ -30,7 +30,7 @@ $.get("/api/get_my_tutor_logs").then(function(data) {
     tableHTML += "</table>"
     $("#tutorLogs").innerHTML(tableHTML)
   });
-$("#logSubmit").click(function(){
+$("#tutorLogs").submit(function(){
     var tutor = $("#tutorName").text();
     var student = $("#studentNameLog").value();
     var date = $("#dateLog").text();
