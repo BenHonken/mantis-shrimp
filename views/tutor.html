@@ -1,42 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="ie=edge" http-equiv="X-UA-Compatible">
-        <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
-        <script crossorigin="anonymous" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-        <script crossorigin="anonymous" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
-        <link href="../public/assets/css/style.css" rel="stylesheet">
-        <link href="../public/assets/css/animate.css" rel="stylesheet">
-        <title>MSTS - Tutor View</title>
-    </head>
-    <body>
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+    <script crossorigin="anonymous" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/assets/css/animate.css" rel="stylesheet">
+    <title>MSTS - Tutor View</title>
+</head>
 
-        <header>
-            <nav class="navbar">
-                <a class="navbar-brand" id="brand">Mantis Shrimp Tutoring Service
-                    <img alt="shrimp" class="img-responsive" id="shrimp" src="../public/assets/images/shrimp.png"></a>
-                <ul class="nav float-right">
-                    <li class="nav-item">
-                        <a class="nav-link" id="Profile">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html" id="logout">Logout</a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+<body>
 
-        <div class="container">
+    <header>
+        <nav class="navbar">
+            <a class="navbar-brand" id="brand">Mantis Shrimp Tutoring Service
+                    <img alt="shrimp" class="img-responsive" id="shrimp" src="/assets/images/shrimp.png"></a>
+            <ul class="nav float-right">
+                <li class="nav-item">
+                    <a class="nav-link" id="Profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html" id="logout">Logout</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-            <div class="jumbotron">
+    <div class="container">
 
-                <div class="row">
-
-                    <div class="col-md-10">
+      <div class="col-md-10">
                         <h2>
                             <strong>Welcome back<span id="tutorsName"></span>
                             </strong>
@@ -74,28 +71,68 @@
                                         <button class="btn btn-primary" type="button">Submit</button>
                                     </div>
                                 </div>
+        <div class="jumbotron">
+
+            <div class="row">
+
+                <div class="col-md-10">
+                    <h2>Welcome back<span id="tutorsName"></span></h2>
+                </div>
+
+                <div class="col-md-2"><button class="btn btn-primary" data-target="#logModal" data-toggle="modal">Add a Log</button></div>
+
+                <div aria-hidden="true" aria-labelledby="logModal" class="modal fade" id="logModal" role="dialog" tabindex="-1">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="logModal">Enter a Log</h5>
+                                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-check" id="studentNameLog">
+                                    <label class="form-check-label" for="materialUnchecked"></label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="dateLog">Date</label>
+                                <input class="form-control" id="dateLog" placeholder="Date" type="lastName">
+                            </div>
+                            <div class="form-group">
+                                <label for="durationLog">Duration</label>
+                                <input class="form-control" id="durationLog" placeholder="Duration" type="lastName">
                             </div>
                         </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                            <button class="btn btn-primary" id="logSubmit" type="button">Submit</button>
+                        </div>
                     </div>
-
                 </div>
+            </div>
 
-                <hr>
+            <hr>
 
-                <div class="row">
-                    <div class="col-md-6" id="studentsDiv">Students</div>
-                    <div class="col-md-6" id="studentsHoursDiv">Hours</div>
-                </div>
+            <div class="row">
+                <div class="col-md-6" id="studentsDiv">Students</div>
+                <div class="col-md-6" id="studentsHoursDiv">Hours</div>
+            </div>
 
-                <br/>
-                <br/>
+            <br/>
+            <br/>
 
-                <div class="row">
-                    <div class="col-md-12" id="tutorLogs">Logged Sessions</div>
-                </div>
-                
-            </div> <!--Jumbotron-->
-        </div> <!--Container-->
-         <script src="../public/assets/js/tutor.js"></script>
-    </body>
+            <div class="row">
+                <div class="col-md-12" id="tutorLogs">Logged Sessions</div>
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+
+    <script src="../public/assets/js/tutor.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/assets/js/routes.js"></script>
+</body>
+
 </html>

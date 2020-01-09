@@ -1,4 +1,5 @@
 var path = require("path");
+var db = require("../models");
 module.exports = function(app) {
     // Load index page
     app.get("/", function(req, res) {
@@ -11,9 +12,26 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../views/store.html"));
     });
 
+    // app.get("/profile", function(req, res) {
+    //     if (db.Users.role === "student") {
+    //         res.sendFile(path.join(__dirname, "../views/student.html"));
+    //     } else if (db.Users.role === "tutor") {
+    //         res.sendFile(path.join(__dirname, "../views/tutor.html"));
+    //     } else if (db.Users.role === "admin") {
+    //         res.sendFile(path.join(__dirname, "../views/admin.html"));
+    //     }
+
+
+    // });
+
     app.get("/student", function(req, res) {
 
         res.sendFile(path.join(__dirname, "../views/student.html"));
+    });
+
+    app.get("/admin", function(req, res) {
+
+        res.sendFile(path.join(__dirname, "../views/admin.html"));
     });
 
     app.get("/tutor", function(req, res) {
@@ -21,12 +39,4 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../views/tutor.html"));
     });
 
-    app.get("/admin", function(req, res) {
-
-        res.sendFile(path.join(__dirname, "../views/admin.html"));
-    });
-    // Render 404 page for any unmatched routes
-    app.get("*", function(req, res) {
-        res.render("404");
-    });
 };
