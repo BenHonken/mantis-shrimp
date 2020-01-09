@@ -22,9 +22,6 @@
                     <img alt="shrimp" class="img-responsive" id="shrimp" src="assets/images/shrimp.png"></a>
                 <ul class="nav float-right">
                     <li class="nav-item">
-                        <a class="nav-link" id="Profile">Profile</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" id="logout">Logout</a>
                     </li>
                 </ul>
@@ -39,14 +36,14 @@
 
                     <div class="col-md-10">
                         <h2>
-                            <strong>Welcome back<span id="tutorsName"></span>
+                            <strong>Welcome, <span id="tutorsName"></span>
                             </strong>
                         </h2>
                     </div>
 
                     <div class="col-md-2">
                         <button class="btn btn-primary" data-target="#logModal" data-toggle="modal" type="button">Add a Log</button>
-
+    
                         <div aria-hidden="true" aria-labelledby="logModal" class="modal fade" id="logModal" role="dialog" tabindex="-1">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -56,6 +53,7 @@
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
+                                    <form id="tutorLogs">
                                     <div class="modal-body">
                                         <div class="modal-body">
                                             <div class="form-check" id="studentNameLog">
@@ -72,8 +70,9 @@
                                         </div>
                                         <div class="modal-footer">
                                             <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
-                                            <button class="btn btn-primary" type="button">Submit</button>
+                                            <button class="btn btn-primary" type="submit">Submit</button>
                                         </div>
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -95,14 +94,13 @@
                         <div class="col-md-12" id="tutorLogs">Logged Sessions</div>
                     </div>
 
-            </div>
-            <!--Jumbotron-->
-        </div>
-        <!--Container-->
+            </div> <!--Jumbotron-->
+        </div> <!--Container-->
 
         <script src="/assets/js/tutor.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="/assets/js/routes.js"></script>
+
     </body>
 
-</html></body></html>
+</html>
