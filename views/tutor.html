@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -34,6 +33,44 @@
 
     <div class="container">
 
+      <div class="col-md-10">
+                        <h2>
+                            <strong>Welcome back<span id="tutorsName"></span>
+                            </strong>
+                        </h2>
+                    </div>
+
+                    <div class="col-md-2">
+                        <button class="btn btn-primary" data-target="#logModal" data-toggle="modal" type="button">Add a Log</button>
+
+                        <div aria-hidden="true" aria-labelledby="logModal" class="modal fade" id="logModal" role="dialog" tabindex="-1">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="logModa">Enter a Student Log:</h5>
+                                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="modal-body">
+                                            <div class="form-check" id="studentNameLog">
+                                                <label class="form-check-label" for="materialUnchecked"></label>
+                                            </div>
+                                        <div class="form-group">
+                                            <label for="passwordInput">Date</label>
+                                            <input class="form-control" id="dateLog" placeholder="Date" type="dateLog">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="passwordInput">Duration</label>
+                                            <input class="form-control" id="durationLog" placeholder="Duration" type="durationLog">
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                                        <button class="btn btn-primary" type="button">Submit</button>
+                                    </div>
+                                </div>
         <div class="jumbotron">
 
             <div class="row">
