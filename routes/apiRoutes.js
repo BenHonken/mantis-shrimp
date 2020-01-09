@@ -44,14 +44,15 @@ module.exports = function(app) {
                 tutor_id: req.user.id
             }
         }).then(function(dbStudents) {
-            for(i=0; i<dbStudents.length; i++){
+            for (i = 0; i < dbStudents.length; i++) {
                 db.Users.findALL({
-                    where:{
+                    where: {
                         id: user_id
                     }
                 })
             }
-        }).then(function(dbUsers){
+
+        }).then(function(dbUsers) {
             res.json(dbUsers)
         });
     });
@@ -103,8 +104,9 @@ module.exports = function(app) {
         let updateStudent = {
             id: req.body.id,
             hours: req.body.hours
-          }
-        db.Students.update(updateStudent, {where:{id: req.body.id}}).then(function (result) {
+
+        }
+        db.Students.update(updateStudent, { where: { id: req.body.id } }).then(function(result) {
             return res.json(result);
         });
     })
@@ -112,8 +114,8 @@ module.exports = function(app) {
         let updateTutor = {
             id: req.body.id,
             hours: req.body.hours
-          }
-        db.Tutors.update(updateTutor, {where:{id: req.body.id}}).then(function (result) {
+        }
+        db.Tutors.update(updateTutor, { where: { id: req.body.id } }).then(function(result) {
             return res.json(result);
         });
     })
