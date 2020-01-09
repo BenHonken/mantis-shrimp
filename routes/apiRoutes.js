@@ -51,6 +51,7 @@ module.exports = function(app) {
                     }
                 })
             }
+
         }).then(function(dbUsers) {
             res.json(dbUsers)
         });
@@ -103,6 +104,7 @@ module.exports = function(app) {
         let updateStudent = {
             id: req.body.id,
             hours: req.body.hours
+
         }
         db.Students.update(updateStudent, { where: { id: req.body.id } }).then(function(result) {
             return res.json(result);
