@@ -75,6 +75,13 @@ module.exports = function(app) {
     });
 
     // POST ROUTES
+    app.post("/api/profile", function(req, res) {
+        db.Users.create(req.body).then(function(response) {
+            console.log("after insert:");
+            console.log(response);
+            res.json(response);
+        });
+    });
     app.post("/api/store", function(req, res) {
         db.Products.create(req.body).then(function(dbProducts) {
             res.json(dbProducts);
