@@ -13,14 +13,22 @@ h2 {
     font-size: 36px;
 }
 
-#placeholder1 {
+#bigJake {
+    height: 300px;
+    width: 300px;
     float: right;
     margin-left: 25px;
+    border-radius: 25px;
+    border: 1px solid white;
 }
 
-#placeholder2 {
+#kyle {
+    height: 300px;
+    width: 300px;
     float: left;
-    margin: 25px;
+    margin-right: 25px;
+    border-radius: 25px;
+    border: 1px solid white;
 }
 
 header {
@@ -30,8 +38,6 @@ header {
 }
 
 button {
-    height: 40px;
-    width: 70px;
     padding: 25px;
 }
 
