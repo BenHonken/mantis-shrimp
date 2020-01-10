@@ -24,13 +24,13 @@ $(document).ready(function() {
 
     function loginUser(email, password) {
         console.log("loginuser")
-        $.get("/api/profile", {
+        $.post("/api/login", {
                 email: email,
                 password: password
             })
             .then(function(response) {
                 console.log("here")
-                window.location.replace("/student");
+                window.location.replace("/profile");
                 // If there's an error, log the error
             })
             .catch(function(err) {

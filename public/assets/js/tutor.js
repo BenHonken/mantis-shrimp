@@ -1,6 +1,7 @@
 const studentIdArray = [];
 const studentNameArray = [];
 const studentHourArray = [];
+$.get("/api/user/");
 $.get("/api/tutor_data").then(function(data) {
     $("#tutorName").text(data.first_name + data.last_name);
   });
