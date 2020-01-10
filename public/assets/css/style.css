@@ -1,13 +1,43 @@
 body {
     background-image: url(../images/main.png);
+    background-attachment: fixed;
     font-family: 'Poiret One', cursive;
-    font-size: 20px;
+    font-size: 24px;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+#placeholder1 {
+    float: right;
+    margin-left: 25px;
+}
+
+#placeholder2 {
+    float: left;
+    margin: 25px;
 }
 
 header {
     background-color: darkslategray;
     color: white;
     margin-bottom: 50px;
+}
+
+button {
+    height: 40px;
+    width: 70px;
+    padding: 25px;
+}
+
+#shrimp {
+    height: 50px;
+    width: 50px;
 }
 
 #brand {
