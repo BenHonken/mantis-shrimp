@@ -1,117 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta content="width=device-width, initial-scale=1.0" name="viewport">
-        <meta content="ie=edge" http-equiv="X-UA-Compatible">
-        <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
-        <script crossorigin="anonymous" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script crossorigin="anonymous" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-        <script crossorigin="anonymous" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-        <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
-        <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" rel="stylesheet"/>
-        <link href="assets/css/style.css" rel="stylesheet">
-        <link href="assets/css/animate.css" rel="stylesheet">
-        <title>MSTS - Store</title>
-    </head>
-    <body>
 
-        <header>
-            <nav class="navbar">
-                <a class="navbar-brand" id="brand">Mantis Shrimp Tutoring Service
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+    <script crossorigin="anonymous" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" rel="stylesheet" />
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/animate.css" rel="stylesheet">
+    <title>MSTS - Store</title>
+</head>
+
+<body>
+
+    <header>
+        <nav class="navbar">
+            <a class="navbar-brand" id="brand">Mantis Shrimp Tutoring Service
                     <img alt="shrimp" class="img-responsive" id="shrimp" src="assets/images/shrimp.png"></a>
-                <ul class="nav float-right">
-                    <li class="nav-item">
-                        <a class="nav-link" id="cart">
-                            <i class="fas fa-shopping-cart"></i>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="profile">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="logout">Logout</a>
-                    </li>
+            <ul class="nav float-right">
+                <li class="nav-item">
+                    <a class="nav-link" id="cart">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="profile">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="logout">Logout</a>
+                </li>
 
-                </ul>
-            </nav>
-        </header>
+            </ul>
+        </nav>
+    </header>
 
-        <div class="container">
+    <div class="container">
 
-            <div class="jumbotron animated fadeIn">
+        <div class="jumbotron animated fadeIn">
 
-                <h2>
-                    <strong>Tutoring Packages and Rates</strong>
-                </h2>
+            <h2>
+                <strong>Tutoring Packages and Rates</strong>
+            </h2>
 
-                <hr>
+            <hr>
 
-                <div class="row">
-                    <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
 
-                        <h3>Packages - All Hours Taught In Person</h3>
+                    <h3>Packages - All Hours Taught In Person</h3>
 
-                        <br/>
+                    <br/>
 
-                        <div class="row">
-                            <div class="col-md-10">
-                                <ul>
-                                    1 Tutoring Hour - $50.00
-                                </ul>
-                            </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-primary" id="package1" type="button">Add to Cart</button>
-                            </div>
+                    <div class="row">
+                        <div class="col-md-10">
+                            <ul>
+                                1 Tutoring Hour - $50.00
+                            </ul>
                         </div>
-
-                        <hr>
-
-                        <div class="row">
-                            <div class="col-md-10">
-                                <ul>
-                                    5 Tutoring Hours - $250.00
-                                </ul>
-                            </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-primary" id="package2" type="button">Add to Cart</button>
-                            </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" id="package1" type="button">Add to Cart</button>
                         </div>
-
-                        <hr>
-
-                        <div class="row">
-                            <div class="col-md-10">
-                                <ul>
-                                    10 Tutoring Hours - $500.00
-                                </ul>
-                            </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-primary" id="package3" type="button">Add to Cart</button>
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row">
-                            <div class="col-md-10">
-                                <ul>
-                                    18 Tutoring Hours - $900.00
-                                </ul>
-                            </div>
-                            <div class="col-md-2">
-                                <button class="btn btn-primary" id="package4" type="button">Add to Cart</button>
-                            </div>
-                        </div>
-
                     </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            <ul>
+                                5 Tutoring Hours - $250.00
+                            </ul>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" id="package2" type="button">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            <ul>
+                                10 Tutoring Hours - $500.00
+                            </ul>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" id="package3" type="button">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="row">
+                        <div class="col-md-10">
+                            <ul>
+                                18 Tutoring Hours - $900.00
+                            </ul>
+                        </div>
+                        <div class="col-md-2">
+                            <button class="btn btn-primary" id="package4" type="button">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- cart div -->
+                    <div style="text-align: center; margin-top: 25px">
+                        <h2>
+                            <strong>
+                                    <span id = "cartDiv">
+
+                                    </span>
+                                </strong>
+                        </h2>
+                        <br>
+                        <span id="totalDiv">
+
+                            </span>
+                    </div>
+                    <!-- cart div -->
                 </div>
-            </div> <!--Jumbotron-->
-        </div> <!--Container-->
+            </div>
+        </div>
+        <!--Jumbotron-->
+    </div>
+    <!--Container-->
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="/assets/js/routes.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="/assets/js/routes.js"></script>
 
-    </body>
+</body>
 
 </html>

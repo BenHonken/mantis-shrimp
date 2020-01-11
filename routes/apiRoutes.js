@@ -101,12 +101,41 @@ module.exports = function(app) {
         });
     });
 
+    app.get("/api/profile", function(req, res) {
+        console.log('req', req.query)
+            //console.log('res', res)
+        db.Users.findAll({
+            where: {
+                email: req.query.email,
+                password: req.query.password
+            }
+        }).then(function(response) {
+            console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$', response)
+            res.json(response);
+        });
+    });
+
     // POST ROUTES
     app.post("/api/profile", function(req, res) {
         db.Users.create(req.body).then(function(response) {
             console.log("after insert:");
-            console.log(response);
+            //console.log(response);
             res.json(response);
+        });
+    });
+    app.post("/api/login", function(req, res) {
+        db.Users.findOne({
+            where: {
+                email: req.user.email,
+                password: req.user.password
+            }
+        }).then(function(response) {
+            //console.log(response);
+            if (response) {
+                res.json(response.role);
+            } else {
+                res.json(false);
+            }
         });
     });
     app.post("/api/store", function(req, res) {
@@ -115,6 +144,7 @@ module.exports = function(app) {
         });
     });
     app.post("/api/new_log", function(req, res) {
+        console.log(req.user)
         db.Log.create(req.body).then(function(dbLogs) {
             res.json(dbLogs);
         });

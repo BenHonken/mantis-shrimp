@@ -1,13 +1,49 @@
 body {
     background-image: url(../images/main.png);
+    background-attachment: fixed;
     font-family: 'Poiret One', cursive;
-    font-size: 20px;
+    font-size: 24px;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 36px;
+}
+
+#bigJake {
+    height: 300px;
+    width: 300px;
+    float: right;
+    margin-left: 25px;
+    border-radius: 25px;
+    border: 1px solid white;
+}
+
+#kyle {
+    height: 300px;
+    width: 300px;
+    float: left;
+    margin-right: 25px;
+    border-radius: 25px;
+    border: 1px solid white;
 }
 
 header {
     background-color: darkslategray;
     color: white;
     margin-bottom: 50px;
+}
+
+button {
+    padding: 25px;
+}
+
+#shrimp {
+    height: 50px;
+    width: 50px;
 }
 
 #brand {
