@@ -25,17 +25,20 @@ function goToStore() {
 function goToHomepage() {
     $.get("../views/index.html").then(window.location.replace("/"))
 };
+function logout() {
+    $.get("/logout");
+};
 
 function addToCart50() {
     console.log("cart")
     cartDiv.html("Cart" + " " + `<i class="fas fa-shopping-cart"></i>`)
-    totalDiv.html(total + 1 + " hour" + `<br>` + "$50.00" + `<br>` + `<br>` + `<button class="btn btn-primary" type="button">Checkout</button>`););
+    totalDiv.html(total + 1 + " hour" + `<br>` + "$50.00" + `<br>` + `<br>` + `<button class="btn btn-primary" type="button">Checkout</button>`);
 }
 
 function addToCart250() {
     console.log("cart")
     cartDiv.html("Cart" + " " + `<i class="fas fa-shopping-cart"></i>`)
-    totalDiv.html(total + 5 + " hours" + `<br>` + "$250.00" + `<br>` + `<br>` + `<button class="btn btn-primary" type="button">Checkout</button>`););
+    totalDiv.html(total + 5 + " hours" + `<br>` + "$250.00" + `<br>` + `<br>` + `<button class="btn btn-primary" type="button">Checkout</button>`);
 }
 
 function addToCart500() {
@@ -47,7 +50,7 @@ function addToCart500() {
 function addToCart900() {
     console.log("cart")
     cartDiv.html("Cart" + " " + `<i class="fas fa-shopping-cart"></i>`)
-    totalDiv.html(total + 18 + " hours" + `<br>` + "$900.00" + `<br>` + `<br>` + `<button class="btn btn-primary" type="button">Checkout</button>`););
+    totalDiv.html(total + 18 + " hours" + `<br>` + "$900.00" + `<br>` + `<br>` + `<button class="btn btn-primary" type="button">Checkout</button>`);
 }
 
 // event handlers

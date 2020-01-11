@@ -29,9 +29,15 @@ $(document).ready(function() {
                 password: password
             })
             .then(function(response) {
-                console.log("here")
-                window.location.replace("/profile");
-                // If there's an error, log the error
+                console.log(response);
+                console.log("posted")
+                if (response.role === "student") {
+                    window.location.replace("/student");
+                } else if (response.role === "tutor") {
+                    window.location.replace("/tutor");
+                } else if (response.role === "admin") {
+                    window.location.replace("/admin");
+                }
             })
             .catch(function(err) {
                 console.log(err);
