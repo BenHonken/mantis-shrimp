@@ -1,108 +1,43 @@
-// Two links, one for logs and one for users
-// Load page with all logs, include created date, maybe build in sorting options
-// Clicking the user link will reload the page using jQuery and create a list of all users
 // User list will have user id, full name, role, hours, and assigned tutor's full name
 // Each user entry will have an "edit" button that will bring up a modal
 // The modal will have an option to edit first name, last name, role, hours, and assigned tutor(from a dropdown of all tutors' full names)
 // Changing a role will delete that user from the tutor or student table and create a new entry in the appropriate table
-
-
-// // Get references to page elements
-// var $exampleText = $("#example-text");
-// var $exampleDescription = $("#example-description");
-// var $submitBtn = $("#submit");
-// var $exampleList = $("#example-list");
-
-// // The API object contains methods for each kind of request we'll make
-// var API = {
-//   saveExample: function(example) {
-//     return $.ajax({
-//       headers: {
-//         "Content-Type": "application/json"
-//       },
-//       type: "POST",
-//       url: "api/examples",
-//       data: JSON.stringify(example)
+$.get("/api/user/");
+$.get("/api/list_users").then(function(data) {
+    //call that will get user data along with data from role table and then populate the user list via jquery.
+    //it will also create buttons to mess with this list.  This one will probably be the worst.  
+  });
+$.get("/api/get_logs").then(function(data) {
+    //add extra fields so you can see which tutor and date created
+    var tableHTML = "<table><tr><th>Student</th><th>Date</th><th>Duration</th></tr>"
+    for(i=0; i<data.length; i++){
+        tableHTML += "<tr><td>" + data[i].student_name + "</td><td>" + data[i].date + "</td><td>" + data[i].duration + "</td></tr>"
+    }
+    tableHTML += "</table>"
+    $("#tutorLogs").innerHTML(tableHTML)
+  });
+//add some on clicks for editing users roles and hours
+// $("#tutorLogs").submit(function(){
+//     var tutor = $("#tutorName").text();
+//     var student = $("#studentNameLog").value();
+//     var date = $("#dateLog").text();
+//     var duration = $("#durationLog").text();
+//     var studentId=studentIdArray[studentNameArray.indexOf(student)];
+//     var studentHours=studentHourArray[studentNameArray.indexOf(student)];;
+//     var tutorId;
+//     var tutorHours;
+//     $.get("api/tutor_data").then(function(data) {
+//       tutorId = data.id;
+//       tutorHours = data.hours;
 //     });
-//   },
-//   getExamples: function() {
-//     return $.ajax({
-//       url: "api/examples",
-//       type: "GET"
-//     });
-//   },
-//   deleteExample: function(id) {
-//     return $.ajax({
-//       url: "api/examples/" + id,
-//       type: "DELETE"
-//     });
-//   }
-// };
-
-// // refreshExamples gets new examples from the db and repopulates the list
-// var refreshExamples = function() {
-//   API.getExamples().then(function(data) {
-//     var $examples = data.map(function(example) {
-//       var $a = $("<a>")
-//         .text(example.text)
-//         .attr("href", "/example/" + example.id);
-
-//       var $li = $("<li>")
-//         .attr({
-//           class: "list-group-item",
-//           "data-id": example.id
-//         })
-//         .append($a);
-
-//       var $button = $("<button>")
-//         .addClass("btn btn-danger float-right delete")
-//         .text("ｘ");
-
-//       $li.append($button);
-
-//       return $li;
-//     });
-
-//     $exampleList.empty();
-//     $exampleList.append($examples);
-//   });
-// };
-
-// // handleFormSubmit is called whenever we submit a new example
-// // Save the new example to the db and refresh the list
-// var handleFormSubmit = function(event) {
-//   event.preventDefault();
-
-//   var example = {
-//     text: $exampleText.val().trim(),
-//     description: $exampleDescription.val().trim()
-//   };
-
-//   if (!(example.text && example.description)) {
-//     alert("You must enter an example text and description!");
-//     return;
-//   }
-
-//   API.saveExample(example).then(function() {
-//     refreshExamples();
-//   });
-
-//   $exampleText.val("");
-//   $exampleDescription.val("");
-// };
-
-// // handleDeleteBtnClick is called when an example's delete button is clicked
-// // Remove the example from the db and refresh the list
-// var handleDeleteBtnClick = function() {
-//   var idToDelete = $(this)
-//     .parent()
-//     .attr("data-id");
-
-//   API.deleteExample(idToDelete).then(function() {
-//     refreshExamples();
-//   });
-// };
-
-// // Add event listeners to the submit and delete buttons
-// $submitBtn.on("click", handleFormSubmit);
-// $exampleList.on("click", ".delete", handleDeleteBtnClick);
+//     $.post("/api/new_log", {
+//     tutor_id: tutorId,
+//     tutor_name: tutor,
+//     student_id: studentId,
+//     student_name: student,
+//     date: date,
+//     duration: duration
+//   })
+//   $.update("/api/student_hours", {id: studentId, hours: studentHours-duration})
+//   $.update("/api/tutor_hours", {id: tutorId, hours: tutorHours+duration})
+// });

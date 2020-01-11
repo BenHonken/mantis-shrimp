@@ -6,7 +6,8 @@ module.exports = function(sequelize, DataTypes) {
   password: {type: DataTypes.STRING, allowNull: false},
   first_name: {type: DataTypes.STRING, allowNull: false},
   last_name: {type: DataTypes.STRING, allowNull: false},
-  
+  hours: DataTypes.DECIMAL(10,2),
+  tutor_id: DataTypes.INTEGER
 });
 Users.prototype.validPassword = function(password) {
   return bcrypt.compareSync(password, this.password);
