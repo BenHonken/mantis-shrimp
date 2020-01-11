@@ -5,28 +5,29 @@ module.exports = function(app) {
         res.json(req.user)
     });
 
-      app.post("/api/signup", function(req, res) {
+    app.post("/api/signup", function(req, res) {
         db.Users.create(req.body)
-          .then(function() {
-            res.redirect(307, "/api/login");
-          })
-          .catch(function(err) {
-            res.status(401).json(err);
-          });
-      });
-    
-      // Route for logging user out
-      app.get("/logout", function(req, res) {
+            .then(function() {
+                res.redirect(307, "/api/login");
+            })
+            .catch(function(err) {
+                res.status(401).json(err);
+            });
+    });
+
+    // Route for logging user out
+    app.get("/logout", function(req, res) {
         req.logout();
         res.redirect("/");
-      });
-    
-    
+    });
+
+
 
     // GET ROUTES
     app.get("/api/user/", function(req, res) {
-    console.log("hello");
-    console.log(req.user);
+        console.log("hello");
+        console.log(req.user);
+        res.json(req.user);
     });
     app.get("/api/students", function(req, res) {
         db.Students.findAll({
