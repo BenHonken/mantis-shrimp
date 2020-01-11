@@ -25,17 +25,23 @@ module.exports = function(app) {
 
     // GET ROUTES
     app.get("/api/user/", function(req, res) {
-    console.log("hello");
-    console.log(req.user);
-    });
-    app.get("/api/get_user_by_id/:id", function(req, res) {
         db.Users.findOne({
             where: {
-                id: id
+                id: user.id
             }
         }).then(function(dbUsers) {
             res.json(dbUsers);
         });
+    });
+    app.get("/api/get_user_by_id/:id", function(req, res) {
+        db.Users.findOne({
+            where: {
+                id: req.params.id
+            }
+        }).then(function(dbUsers) {
+            res.json(dbUsers);
+        });
+    })
     app.get("/api/students", function(req, res) {
         db.Users.findAll({
             where: {
@@ -159,9 +165,9 @@ module.exports = function(app) {
         });
     });
     // DELETE ROUTES
-    app.delete("/api/examples/:id", function(req, res) {
-        db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-            res.json(dbExample);
+    app.delete("/api/delete_user_by_id/:id", function(req, res) {
+        db.Users.destroy({ where: { id: req.params.id } }).then(function(dbUsers) {
+            res.json(dbUsers);
         });
     });
     // UPDATE ROUTES
@@ -180,7 +186,21 @@ module.exports = function(app) {
             id: req.user.id,
             hours: req.body.hours
         }
-        db.Tutors.update(updateTutor, { where: { id: req.user.id } }).then(function(result) {
+        db.Users.update(updateTutor, { where: { id: req.user.id } }).then(function(result) {
+            return res.json(result);
+        });
+    })
+    app.put("/api/update_user/", function(req, res) {
+        let updateUser = {
+            id: req.body.id,
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
+            email: req.body.email,
+            roles: req.body.roles,
+            hours: req.body.hours,
+            tutor_id: req.body.tutor_id
+        }
+        db.Users.update(updateUser, { where: { id: req.body.id } }).then(function(result) {
             return res.json(result);
         });
     })
