@@ -27,6 +27,7 @@ module.exports = function(app) {
     app.get("/student", function(req, res) {
 
         res.sendFile(path.join(__dirname, "../views/student.html"));
+
     });
 
     app.get("/admin", function(req, res) {
@@ -37,6 +38,7 @@ module.exports = function(app) {
     app.get("/tutor", function(req, res) {
 
         res.sendFile(path.join(__dirname, "../views/tutor.html"));
+
     });
 
 };
