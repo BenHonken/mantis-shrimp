@@ -34,7 +34,7 @@ $(document).ready(function() {
 
     function signUpUser(email, password, first_name, last_name, role) {
         console.log("signUpUser");
-        $.post("/api/profile", {
+        $.post("/api/signup", {
                 first_name: first_name,
                 last_name: last_name,
                 email: email,

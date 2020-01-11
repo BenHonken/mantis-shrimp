@@ -1,5 +1,6 @@
 var path = require("path");
 var db = require("../models");
+var passport = require("../config/passport");
 module.exports = function(app) {
     // Load index page
     app.get("/", function(req, res) {
@@ -12,17 +13,17 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../views/store.html"));
     });
 
-    // app.get("/profile", function(req, res) {
-    //     if (db.Users.role === "student") {
-    //         res.sendFile(path.join(__dirname, "../views/student.html"));
-    //     } else if (db.Users.role === "tutor") {
-    //         res.sendFile(path.join(__dirname, "../views/tutor.html"));
-    //     } else if (db.Users.role === "admin") {
-    //         res.sendFile(path.join(__dirname, "../views/admin.html"));
-    //     }
+    app.get("/profile", function(req, res) {
+        if (db.Users.role === "student") {
+            res.sendFile(path.join(__dirname, "../views/student.html"));
+        } else if (db.Users.role === "tutor") {
+            res.sendFile(path.join(__dirname, "../views/tutor.html"));
+        } else if (db.Users.role === "admin") {
+            res.sendFile(path.join(__dirname, "../views/admin.html"));
+        }
 
 
-    // });
+    });
 
     app.get("/student", function(req, res) {
 

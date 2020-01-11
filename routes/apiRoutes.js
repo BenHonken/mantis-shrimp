@@ -1,11 +1,37 @@
 var db = require("../models");
+var passport = require("../config/passport");
 module.exports = function(app) {
+    app.post("/api/login", passport.authenticate("local"), function(req, res) {
+        res.json(req.user)
+    });
+
+      app.post("/api/signup", function(req, res) {
+        db.Users.create(req.body)
+          .then(function() {
+            res.redirect(307, "/api/login");
+          })
+          .catch(function(err) {
+            res.status(401).json(err);
+          });
+      });
+    
+      // Route for logging user out
+      app.get("/logout", function(req, res) {
+        req.logout();
+        res.redirect("/");
+      });
+    
+    
 
     // GET ROUTES
+    app.get("/api/user/", function(req, res) {
+    console.log("hello");
+    console.log(req.user);
+    });
     app.get("/api/students", function(req, res) {
         db.Students.findAll({
             where: {
-                user_id: req.params.id
+                user_id: req.user.id
             }
         }).then(function(dbStudents) {
             res.json(dbStudents);
@@ -14,7 +40,7 @@ module.exports = function(app) {
     app.get("/api/tutors", function(req, res) {
         db.Tutors.findAll({
             where: {
-                tutor_id: req.params.id
+                tutor_id: req.user.id
             }
         }).then(function(dbTutors) {
             res.json(dbTutors);
@@ -23,13 +49,13 @@ module.exports = function(app) {
     app.get("/api/admin", function(req, res) {
         db.Admin.findAll({
             where: {
-                user_id: req.params.id
+                user_id: req.user.id
             }
         }).then(function(dbAdmin) {
             res.json(dbAdmin);
         });
     });
-    app.get("/api/tutor_data", function(req, res) {
+    app.get("/api/tutor_data/", function(req, res) {
         db.Users.findAll({
             where: {
                 id: req.user.id
@@ -38,7 +64,7 @@ module.exports = function(app) {
             res.json(dbTutor);
         });
     });
-    app.get("/api/get_student_names", function(req, res) {
+    app.get("/api/get_student_names/", function(req, res) {
         db.Students.findAll({
             where: {
                 tutor_id: req.user.id
@@ -56,7 +82,7 @@ module.exports = function(app) {
             res.json(dbUsers)
         });
     });
-    app.get("/api/get_student_hours", function(req, res) {
+    app.get("/api/get_student_hours/", function(req, res) {
         db.Students.findAll({
             where: {
                 tutor_id: req.user.id
@@ -65,7 +91,7 @@ module.exports = function(app) {
             res.json(dbStudents);
         });
     });
-    app.get("/api/get_my_tutor_logs", function(req, res) {
+    app.get("/api/get_my_tutor_logs/", function(req, res) {
         db.Logs.findAll({
             where: {
                 tutor_user_id: req.user.id
@@ -142,10 +168,10 @@ module.exports = function(app) {
     })
     app.put("/api/tutor_hours/", function(req, res) {
         let updateTutor = {
-            id: req.body.id,
+            id: req.user.id,
             hours: req.body.hours
         }
-        db.Tutors.update(updateTutor, { where: { id: req.body.id } }).then(function(result) {
+        db.Tutors.update(updateTutor, { where: { id: req.user.id } }).then(function(result) {
             return res.json(result);
         });
     })
