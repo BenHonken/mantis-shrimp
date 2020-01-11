@@ -28,10 +28,18 @@ module.exports = function(app) {
     console.log("hello");
     console.log(req.user);
     });
-    app.get("/api/students", function(req, res) {
-        db.Students.findAll({
+    app.get("/api/get_user_by_id/:id", function(req, res) {
+        db.Users.findOne({
             where: {
-                user_id: req.user.id
+                id: id
+            }
+        }).then(function(dbUsers) {
+            res.json(dbUsers);
+        });
+    app.get("/api/students", function(req, res) {
+        db.Users.findAll({
+            where: {
+                tutor_id: req.user.id
             }
         }).then(function(dbStudents) {
             res.json(dbStudents);
@@ -74,7 +82,7 @@ module.exports = function(app) {
         });
     });
     app.get("/api/get_student_hours/", function(req, res) {
-        db.Students.findAll({
+        db.Users.findAll({
             where: {
                 tutor_id: req.user.id
             }
@@ -91,6 +99,16 @@ module.exports = function(app) {
             res.json(dbLogs);
         });
     });
+    app.get("/api/get_logs/", function(req, res) {
+        db.Logs.findAll().then(function(dbLogs) {
+            res.json(dbLogs);
+        });
+    });
+    app.get("/api/list_users", function(req, res) {
+        db.Users.findAll().then(function(dbUsers){
+            res.json(dbUsers)
+        })
+    })
 
     app.get("/api/profile", function(req, res) {
         console.log('req', req.query)
@@ -136,7 +154,7 @@ module.exports = function(app) {
     });
     app.post("/api/new_log", function(req, res) {
         console.log(req.user)
-        db.Log.create(req.body).then(function(dbLogs) {
+        db.Logs.create(req.body).then(function(dbLogs) {
             res.json(dbLogs);
         });
     });
@@ -153,7 +171,7 @@ module.exports = function(app) {
             hours: req.body.hours
 
         }
-        db.Students.update(updateStudent, { where: { id: req.body.id } }).then(function(result) {
+        db.Users.update(updateStudent, { where: { id: req.body.id } }).then(function(result) {
             return res.json(result);
         });
     })
