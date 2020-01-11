@@ -3,7 +3,10 @@ const studentNameArray = [];
 const studentHourArray = [];
 $.get("/api/user/");
 $.get("/api/tutor_data").then(function(data) {
-    $("#tutorName").text(data.first_name + data.last_name);
+  console.log(data);
+  console.log(data.first_name);
+  console.log(data.last_name);
+    $("#tutorsName").text(data.first_name + " " + data.last_name);
   });
 $.get("/api/get_student_names").then(function(data) {
     var studentHTML

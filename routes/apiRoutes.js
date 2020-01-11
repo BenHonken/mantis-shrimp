@@ -56,7 +56,7 @@ module.exports = function(app) {
         });
     });
     app.get("/api/tutor_data/", function(req, res) {
-        db.Users.findAll({
+        db.Users.findOne({
             where: {
                 id: req.user.id
             }
@@ -65,19 +65,10 @@ module.exports = function(app) {
         });
     });
     app.get("/api/get_student_names/", function(req, res) {
-        db.Students.findAll({
+        db.Users.findAll({
             where: {
                 tutor_id: req.user.id
             }
-        }).then(function(dbStudents) {
-            for (i = 0; i < dbStudents.length; i++) {
-                db.Users.findALL({
-                    where: {
-                        id: user_id
-                    }
-                })
-            }
-
         }).then(function(dbUsers) {
             res.json(dbUsers)
         });
