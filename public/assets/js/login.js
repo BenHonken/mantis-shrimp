@@ -22,16 +22,22 @@ $(document).ready(function() {
         passwordInput.val("");
     });
 
-    function loginUser(email, password) {
+    function loginUser(email, password, role) {
         console.log("loginuser")
         $.get("/api/profile", {
                 email: email,
-                password: password
+                password: password,
+                role: role
             })
             .then(function(response) {
                 console.log("here")
-                window.location.replace("/student");
-                // If there's an error, log the error
+                console.log(role)
+                console.log(response)
+                if (response[0].role === "student") {
+                    window.location.replace("/student");
+                } else if (response[0].role === "tutor") {
+                    window.location.replace("/tutor");
+                }
             })
             .catch(function(err) {
                 console.log(err);
