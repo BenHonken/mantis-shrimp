@@ -6,7 +6,7 @@ module.exports = function(sequelize, DataTypes) {
   password: {type: DataTypes.STRING, allowNull: false},
   first_name: {type: DataTypes.STRING, allowNull: false},
   last_name: {type: DataTypes.STRING, allowNull: false},
-  hours: {type: DataTypes.DECIMAL(10,2), defaultValue: 0.00},
+  hours: {type: DataTypes.INTEGER, allowNull: false, defaultValue: 0},
   tutor_id: DataTypes.INTEGER
 });
 Users.prototype.validPassword = function(password) {

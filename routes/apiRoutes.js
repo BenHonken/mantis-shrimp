@@ -27,7 +27,7 @@ module.exports = function(app) {
     app.get("/api/user/", function(req, res) {
         db.Users.findOne({
             where: {
-                id: user.id
+                id: req.user.id
             }
         }).then(function(dbUsers) {
             res.json(dbUsers);
@@ -81,7 +81,7 @@ module.exports = function(app) {
     app.get("/api/get_student_names/", function(req, res) {
         db.Users.findAll({
             where: {
-                tutor_id: req.user.id
+                tutor_id: parseInt(req.user.id)
             }
         }).then(function(dbUsers) {
             res.json(dbUsers)
@@ -159,8 +159,10 @@ module.exports = function(app) {
         });
     });
     app.post("/api/new_log", function(req, res) {
-        console.log(req.user)
-        db.Logs.create(req.body).then(function(dbLogs) {
+        var log = req.body;
+        log.tutor_user_id = req.user.id;
+        log.tutor_name = req.user.first_name + " " + req.user.last_name;
+        db.Logs.create(log).then(function(dbLogs) {
             res.json(dbLogs);
         });
     });
@@ -184,7 +186,7 @@ module.exports = function(app) {
     app.put("/api/tutor_hours/", function(req, res) {
         let updateTutor = {
             id: req.user.id,
-            hours: req.body.hours
+            hours: req.user.hours + req.body.duration
         }
         db.Users.update(updateTutor, { where: { id: req.user.id } }).then(function(result) {
             return res.json(result);
