@@ -5,23 +5,23 @@ module.exports = function(app) {
         res.json(req.user)
     });
 
-      app.post("/api/signup", function(req, res) {
+    app.post("/api/signup", function(req, res) {
         db.Users.create(req.body)
-          .then(function() {
-            res.redirect(307, "/api/login");
-          })
-          .catch(function(err) {
-            res.status(401).json(err);
-          });
-      });
-    
-      // Route for logging user out
-      app.get("/logout", function(req, res) {
+            .then(function() {
+                res.redirect(307, "/api/login");
+            })
+            .catch(function(err) {
+                res.status(401).json(err);
+            });
+    });
+
+    // Route for logging user out
+    app.get("/logout", function(req, res) {
         req.logout();
         res.redirect("/");
-      });
-    
-    
+    });
+
+
 
     // GET ROUTES
     app.get("/api/user/", function(req, res) {
@@ -60,6 +60,16 @@ module.exports = function(app) {
             res.json(dbTutors);
         });
     });
+    app.get("/api/user_hours", function(req, res) {
+        db.Users.findOne({
+            where: {
+                id: req.user.id
+            }
+        }).then(function(dbStudents) {
+            res.json(dbStudents.hours);
+        });
+    });
+
     app.get("/api/admin", function(req, res) {
         db.Admin.findAll({
             where: {
@@ -111,7 +121,7 @@ module.exports = function(app) {
         });
     });
     app.get("/api/list_users", function(req, res) {
-        db.Users.findAll().then(function(dbUsers){
+        db.Users.findAll().then(function(dbUsers) {
             res.json(dbUsers)
         })
     })
@@ -174,10 +184,9 @@ module.exports = function(app) {
     });
     // UPDATE ROUTES
     app.put("/api/student_hours/", function(req, res) {
+        console.log("student hours route hit");
         let updateStudent = {
-            id: req.body.id,
             hours: req.body.hours
-
         }
         db.Users.update(updateStudent, { where: { id: req.body.id } }).then(function(result) {
             return res.json(result);
