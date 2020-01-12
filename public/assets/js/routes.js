@@ -15,6 +15,7 @@ var totalDiv = $("#totalDiv");
 let total = 0;
 var shoppingCart = $("#shoppingCart");
 var hours = 0;
+var profile = $("#profile");
 
 // functions
 function goToStudent() {
@@ -50,6 +51,11 @@ function goToHomepage() {
 function logout() {
     $.get("/logout");
 };
+
+function goToProfile() {
+    $.get("../views/student.html").then(window.location.replace("/student"))
+};
+
 
 function addToCart50() {
     hours = 1;
@@ -103,3 +109,4 @@ addCart50.on("click", addToCart50);
 addCart250.on("click", addToCart250);
 addCart500.on("click", addToCart500);
 addCart900.on("click", addToCart900);
+profile.on("click", goToProfile);

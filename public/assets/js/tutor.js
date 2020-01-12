@@ -8,23 +8,25 @@ $.get("/api/tutor_data").then(function(data) {
   console.log(data.last_name);
     $("#tutorsName").text(data.first_name + " " + data.last_name);
   });
-$.get("/api/get_student_names").then(function(data) {
-    var studentHTML
+$.get("/api/get_student_names/").then(function(data) {
+    var studentHTML = "";
+    var studentNameLogHTML = "";
     for(i=0; i<data.length; i++){
         studentHTML += data[i].first_name + " " + data[i].last_name + "<br />"
-        $("#studentNameLog").append('<input type="radio" name="student" value="' + data[i].first_name + " " + data[i].last_name + '"> ' + data[i].first_name + " " + data[i].last_name+ '<br />')
-        studentNameArray.append(data[i].first_name + " " + data[i].last_name)
+        studentNameLogHTML += '<div class="form-check"> <input class="form-check-input" name="student" type="radio" value="' + data[i].first_name + " " + data[i].last_name + '"> <label class="form-check-label" for="materialUnchecked">' + data[i].first_name + " " + data[i].last_name + '</label> </div> <br />'
+        studentNameArray.push(data[i].first_name + " " + data[i].last_name)
     }
-    $("#studentsDiv").innerHTML(studentHTML)
+    $("#studentsDiv").html(studentHTML);
+    $("#studentNameLog").html(studentNameLogHTML);
   });
 $.get("/api/get_student_hours").then(function(data) {
-    var hoursHTML
+    var hoursHTML = "";
     for(i=0; i<data.length; i++){
-      hoursHTML += data[i].hours + "<br />";
-      studentIdArray.append(data[i].id);
-      studentHourArray.append(data[i].hours);
+      hoursHTML += data[i].hours + " hours<br />";
+      studentIdArray.push(data[i].id);
+      studentHourArray.push(data[i].hours);
     }
-    $("#studentsHoursDiv").innerHTML(hoursHTML)
+    $("#studentsHoursDiv").html(hoursHTML)
   });
 $.get("/api/get_my_tutor_logs").then(function(data) {
     var tableHTML = "<table><tr><th>Student</th><th>Date</th><th>Duration</th></tr>"
@@ -32,29 +34,30 @@ $.get("/api/get_my_tutor_logs").then(function(data) {
         tableHTML += "<tr><td>" + data[i].student_name + "</td><td>" + data[i].date + "</td><td>" + data[i].duration + "</td></tr>"
     }
     tableHTML += "</table>"
-    $("#tutorLogs").innerHTML(tableHTML)
+    $("#myLogs").html(tableHTML)
   });
 $("#tutorLogs").submit(function(){
-    var tutor = $("#tutorName").text();
-    var student = $("#studentNameLog").value();
-    var date = $("#dateLog").text();
-    var duration = $("#durationLog").text();
-    var studentId=studentIdArray[studentNameArray.indexOf(student)];
-    var studentHours=studentHourArray[studentNameArray.indexOf(student)];;
-    var tutorId;
-    var tutorHours;
-    $.get("api/tutor_data").then(function(data) {
-      tutorId = data.id;
-      tutorHours = data.hours;
-    });
+  event.preventDefault();
+    var radioButton = $("input[name='student']:checked");
+    var student = radioButton.val();
+    console.log($("#studentNameLog").val());
+    var date = $("#dateLog").val();
+    var duration = parseInt($("#durationLog").val());
+    var studentId=parseInt(studentIdArray[studentNameArray.indexOf(student)]);
+    var studentHours=parseInt(studentHourArray[studentNameArray.indexOf(student)]);
     $.post("/api/new_log", {
-    tutor_id: tutorId,
-    tutor_name: tutor,
-    student_id: studentId,
-    student_name: student,
-    date: date,
-    duration: duration
-  })
-  $.update("/api/student_hours", {id: studentId, hours: studentHours-duration})
-  $.update("/api/tutor_hours", {id: tutorId, hours: tutorHours+duration})
+      student_user_id: studentId,
+      student_name: student,
+      date: date,
+      duration: duration}).then(
+  $.ajax({
+    method: "PUT",
+    url: "/api/student_hours/",
+    data: {id: studentId, hours: studentHours-duration}
+  })).then(
+  $.ajax({
+    method: "PUT",
+    url: "/api/tutor_hours/",
+    data: {duration: duration}
+  })).then(setTimeout(function(){window.location.reload();},300))
 });

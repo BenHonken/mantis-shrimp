@@ -29,7 +29,7 @@
 
         <div class="container">
 
-            <div class="jumbotron animated fadeIn">
+            <div class="jumbotron">
 
                 <h2>Welcome, <span id="adminName"></span></h2>
 
@@ -47,6 +47,57 @@
             </div>
         </div>
 
+        <div aria-hidden="true" aria-labelledby="logModal" class="modal fade" id="userEdit" role="dialog" tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="userEdit">What would you like to edit?</h5>
+                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="adminLogs">
+                    <div class="modal-body">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="passwordInput">ID</label>
+                                <input class="form-control" id="idLog" type="dateLog">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordInput">First Name</label>
+                                <input class="form-control" id="adminFirstName" type="durationLog">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordInput">Last Name</label>
+                                <input class="form-control" id="adminLastName" type="durationLog">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordInput">Email</label>
+                                <input class="form-control" id="adminEmail" type="durationLog">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordInput">Role</label>
+                                <input class="form-control" id="adminRole" type="durationLog">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordInput">Hours</label>
+                                <input class="form-control" id="adminHours" type="durationLog">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordInput">Tutor ID</label>
+                                <input class="form-control" id="adminTutorID" type="durationLog">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
+
+        <script src="/assets/js/admin.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         
     </body>
