@@ -25,8 +25,7 @@ module.exports = function(app) {
 
     // GET ROUTES
     app.get("/api/user/", function(req, res) {
-        console.log("hello");
-        console.log(req.user);
+
         res.json(req.user);
     });
     app.get("/api/students", function(req, res) {
@@ -47,6 +46,16 @@ module.exports = function(app) {
             res.json(dbTutors);
         });
     });
+    app.get("/api/user_hours", function(req, res) {
+        db.Users.findOne({
+            where: {
+                id: req.user.id
+            }
+        }).then(function(dbStudents) {
+            res.json(dbStudents.hours);
+        });
+    });
+
     app.get("/api/admin", function(req, res) {
         db.Admin.findAll({
             where: {
@@ -57,7 +66,7 @@ module.exports = function(app) {
         });
     });
     app.get("/api/tutor_data/", function(req, res) {
-        db.Users.findAll({
+        db.Users.findOne({
             where: {
                 id: req.user.id
             }
@@ -66,19 +75,10 @@ module.exports = function(app) {
         });
     });
     app.get("/api/get_student_names/", function(req, res) {
-        db.Students.findAll({
+        db.Users.findAll({
             where: {
                 tutor_id: req.user.id
             }
-        }).then(function(dbStudents) {
-            for (i = 0; i < dbStudents.length; i++) {
-                db.Users.findALL({
-                    where: {
-                        id: user_id
-                    }
-                })
-            }
-
         }).then(function(dbUsers) {
             res.json(dbUsers)
         });
@@ -158,14 +158,15 @@ module.exports = function(app) {
     });
     // UPDATE ROUTES
     app.put("/api/student_hours/", function(req, res) {
+        console.log("student hours route hit");
         let updateStudent = {
-            id: req.body.id,
             hours: req.body.hours
-
         }
-        db.Students.update(updateStudent, { where: { id: req.body.id } }).then(function(result) {
-            return res.json(result);
-        });
+        console.log(updateStudent);
+        db.Users.update(updateStudent, { where: { id: req.body.id } })
+            .then(function(response) {
+                return res.json(response);
+            });
     })
     app.put("/api/tutor_hours/", function(req, res) {
         let updateTutor = {
