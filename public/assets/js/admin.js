@@ -23,9 +23,7 @@ $.get("/api/get_logs").then(function(data) {
     $("#allLogs").html(tableHTML)
   });
 $(document).on("click",".userEdit", function(){
-  console.log("click");
   var id = $(this).data( "id" );
-  console.log(id);
   $.get("api/get_user_by_id/" + JSON.stringify(id)).then(function(response){
     $("#idLog").val(response.id);
     $("#adminFirstName").val(response.first_name);
@@ -37,6 +35,7 @@ $(document).on("click",".userEdit", function(){
   })
 });
 $("#adminLogs").submit(function(){
+  event.preventDefault();
   var updateUser = {
     id: $("#idLog").val(),
     first_name: $("#adminFirstName").val(),
@@ -48,9 +47,9 @@ $("#adminLogs").submit(function(){
   }
   $.ajax({
     method: "PUT",
-    url: "/api/update_user",
+    url: "/api/update_user/",
     data: updateUser
-  })
+  }).then(setTimeout(function(){window.location.reload();},100));
 });
 $(document).on("click",".userDelete", function(){
   console.log("click");
@@ -59,5 +58,5 @@ $(document).on("click",".userDelete", function(){
   $.ajax({
     method: "DELETE",
     url: "/api/delete_user_by_id/" + JSON.stringify(id),
-  })
+  }).then(setTimeout(function(){window.location.reload();},100));
 });
