@@ -21,14 +21,20 @@ module.exports = function(app) {
         } else if (db.Users.role === "admin") {
             res.sendFile(path.join(__dirname, "../views/admin.html"));
         }
+        else{
+            res.sendFile(path.join(__dirname, "../views/index.html"))
+        }
 
 
     });
 
     app.get("/student", function(req, res) {
-
-        res.sendFile(path.join(__dirname, "../views/student.html"));
-
+        if (req.user.role === "student") {
+            res.sendFile(path.join(__dirname, "../views/student.html"));
+        }
+        else{
+            res.sendFile(path.join(__dirname, "../views/index.html"))
+        }
     });
 
     app.get("/admin", function(req, res) {
@@ -37,9 +43,12 @@ module.exports = function(app) {
     });
 
     app.get("/tutor", function(req, res) {
-
-        res.sendFile(path.join(__dirname, "../views/tutor.html"));
-
+        if (req.user.role === "tutor") {
+            res.sendFile(path.join(__dirname, "../views/tutor.html"));
+        }
+        else{
+            res.sendFile(path.join(__dirname, "../views/index.html"))
+        }
     });
 
 };
