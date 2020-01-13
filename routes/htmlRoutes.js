@@ -1,6 +1,8 @@
 var path = require("path");
 var db = require("../models");
 var passport = require("../config/passport");
+var isAuthenticated = require("../config/isAuthenticated");
+
 module.exports = function(app) {
     // Load index page
     app.get("/", function(req, res) {
@@ -41,5 +43,9 @@ module.exports = function(app) {
         res.sendFile(path.join(__dirname, "../views/tutor.html"));
 
     });
+
+    // app.get("/student", isAuthenticated, function(req, res) {
+    //     res.sendFile(path.join(__dirname, "../views/index.html"));
+    // });
 
 };
