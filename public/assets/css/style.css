@@ -13,6 +13,19 @@ h2 {
     font-size: 36px;
 }
 
+th{
+    padding: 15px;
+    text-decoration: underline;
+}
+
+td {
+    padding: 15px;
+}
+
+tr {
+    padding: 15px;
+}
+
 #bigJake {
     height: 300px;
     width: 300px;
@@ -75,6 +88,7 @@ hr {
     border-radius: 25px;
     background-color: darkslategray;
     color: white;
+    border: 1px solid white;
 }
 
 #signupModal {
