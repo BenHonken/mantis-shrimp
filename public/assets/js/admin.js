@@ -17,7 +17,7 @@ $.get("/api/get_logs").then(function(data) {
     //add extra fields so you can see which tutor and date created
     var tableHTML = "<table><tr><th>Tutor</th><th>Student</th><th>Date of Session</th><th>Date Created</th><th>Duration</th></tr>"
     for(i=0; i<data.length; i++){
-        tableHTML += "<tr><td>" + data[i].tutor_name + "</td><td>" + data[i].student_name + "</td><td>" + data[i].date + "</td><td>" + data[i].createdAt + "</td><td>" + data[i].duration + "</td></tr>"
+        tableHTML += "<tr><td>" + data[i].tutor_name + "</td><td>" + data[i].student_name + "</td><td>" + data[i].date.substring(0,10) + "</td><td>" + data[i].createdAt.substring(0,10) + "</td><td>" + data[i].duration + "</td></tr>"
     }
     tableHTML += "</table>"
     $("#allLogs").html(tableHTML)
@@ -42,8 +42,10 @@ $("#adminLogs").submit(function(){
     last_name: $("#adminLastName").val(),
     email: $("#adminEmail").val(),
     role: $("#adminRole").val(),
-    hours: $("#adminHours").val(),
-    tutor_id: $("#adminTutorID").val()
+    hours: $("#adminHours").val()
+  }
+  if($("#adminTutorID").val().length>0){
+    updateUser.tutor_id = $("#adminTutorID").val();
   }
   $.ajax({
     method: "PUT",
