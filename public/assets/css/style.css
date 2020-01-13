@@ -41,6 +41,16 @@ tr {
     float: left;
     margin-right: 25px;
     border-radius: 25px;
+    border: 
+    1px solid white;
+}
+
+#ben {
+    height: 300px;
+    width: 300px;
+    float: left;
+    margin-right: 25px;
+    border-radius: 25px;
     border: 1px solid white;
 }
 

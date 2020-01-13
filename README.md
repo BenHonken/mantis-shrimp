@@ -26,7 +26,7 @@ Using GET and POST routes with delete and update buttons, this application hits 
 
 # Launch
 
-Heroku link: 
+Heroku link:  (https://mantisshrimp.herokuapp.com/)
 
 # Technologies
 
@@ -50,3 +50,5 @@ The program is at an "MVP status," meeting the requirements of the project. We d
 # Sources and Inspiration
 
 Ben's real life tutoring website is the spiritual sibling of this project. He provided the idea, and since his proposed functionality hit all of the requisites of the project, we decided to run with it!
+
+Huge thanks to all the TAs and Chris our instructor for helping push us over the finish line.
