@@ -43,59 +43,56 @@
 
                     <div class="col-md-2">
                         <button class="btn btn-primary" data-target="#logModal" data-toggle="modal" type="button">Add a Log</button>
-    
-                        <div aria-hidden="true" aria-labelledby="logModal" class="modal fade" id="logModal" role="dialog" tabindex="-1">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="logModal">Enter a Student Log:</h5>
-                                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <form id="tutorLogs">
-                                    <div class="modal-body">
-                                        <div class="modal-body">
-                                            <div class="form-check" id="studentNameLog">
-                                                <label class="form-check-label" for="materialUnchecked"></label>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="passwordInput">Date</label>
-                                                <input class="form-control" id="dateLog" placeholder="Date" type="dateLog">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="passwordInput">Duration</label>
-                                                <input class="form-control" id="durationLog" placeholder="Duration" type="durationLog">
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
-                                            <button class="btn btn-primary" type="submit">Submit</button>
-                                        </div>
-                                    </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
+
                 </div>
 
-                <hr>
+                        <hr>
 
-                    <div class="row">
-                        <div class="col-md-6" id="studentsDiv">Students</div>
-                        <div class="col-md-6" id="studentsHoursDiv">Hours</div>
-                    </div>
-
-                    <br/>
-                    <br/>
-
-                    <div class="row">
-                        <div class="col-md-12" id="myLogs">Logged Sessions</div>
-                    </div>
+                        <div class="row">
+                            <div class="col-md-6" id="studentsDiv"><ul>Students</ul></div>
+                            <div class="col-md-6" id="studentsHoursDiv"><ul>Hours</ul>></div>
+                        </div>
+    
+                        <div class="row">
+                            <div class="col-md-12" id="myLogs"><ul>Logged Sessions</ul></div>
+                        </div>
 
             </div> <!--Jumbotron-->
         </div> <!--Container-->
+
+        <div aria-hidden="true" aria-labelledby="logModal" class="modal fade" id="logModal" role="dialog" tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="logModal">Enter a Student Log:</h5>
+                        <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form id="tutorLogs">
+                    <div class="modal-body">
+                        <div class="modal-body">
+                            <div class="form-check" id="studentNameLog">
+                                <label class="form-check-label" for="materialUnchecked"></label>
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordInput">Date</label>
+                                <input class="form-control" id="dateLog" placeholder="Date" type="dateLog">
+                            </div>
+                            <div class="form-group">
+                                <label for="passwordInput">Duration</label>
+                                <input class="form-control" id="durationLog" placeholder="Duration" type="durationLog">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                        </div>
+                    </form>
+                    </div>
+                </div>
+            </div>
 
         <script src="/assets/js/tutor.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
