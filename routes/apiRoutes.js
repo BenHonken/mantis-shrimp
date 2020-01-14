@@ -207,7 +207,7 @@ module.exports = function(app) {
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             email: req.body.email,
-            roles: req.body.roles,
+            role: req.body.role,
             hours: req.body.hours,
             tutor_id: req.body.tutor_id
         }
