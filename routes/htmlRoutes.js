@@ -17,14 +17,14 @@ module.exports = function(app) {
 
     app.get("/profile", function(req, res) {
         if (db.Users.role === "student") {
-            res.sendFile(path.join(__dirname, "../views/student.html"));
+            res.redirect("/student");
         } else if (db.Users.role === "tutor") {
-            res.sendFile(path.join(__dirname, "../views/tutor.html"));
+            res.redirect("/tutor");
         } else if (db.Users.role === "admin") {
-            res.sendFile(path.join(__dirname, "../views/admin.html"));
+            res.redirect("/admin");
         }
         else{
-            res.sendFile(path.join(__dirname, "../views/index.html"))
+            res.redirect("/")
         }
 
 
@@ -35,13 +35,17 @@ module.exports = function(app) {
             res.sendFile(path.join(__dirname, "../views/student.html"));
         }
         else{
-            res.sendFile(path.join(__dirname, "../views/index.html"))
+            res.redirect("/")
         }
     });
 
     app.get("/admin", function(req, res) {
-
-        res.sendFile(path.join(__dirname, "../views/admin.html"));
+        if (req.user.role === "admin") {
+            res.sendFile(path.join(__dirname, "../views/admin.html"));
+        }
+        else{
+            res.redirect("/")
+        }
     });
 
     app.get("/tutor", function(req, res) {
@@ -49,12 +53,8 @@ module.exports = function(app) {
             res.sendFile(path.join(__dirname, "../views/tutor.html"));
         }
         else{
-            res.sendFile(path.join(__dirname, "../views/index.html"))
+            res.redirect("/")
         }
     });
-
-    // app.get("/student", isAuthenticated, function(req, res) {
-    //     res.sendFile(path.join(__dirname, "../views/index.html"));
-    // });
 
 };
