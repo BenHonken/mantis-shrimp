@@ -17,8 +17,9 @@ module.exports = function(app) {
 
     // Route for logging user out
     app.get("/logout", function(req, res) {
-        req.logout();
-        res.redirect("/");
+        req.session.destroy(function (err) {
+            res.redirect('/'); 
+          });
     });
 
       // POST route for saving a new todo

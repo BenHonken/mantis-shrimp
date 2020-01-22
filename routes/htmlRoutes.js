@@ -31,28 +31,43 @@ module.exports = function(app) {
     });
 
     app.get("/student", function(req, res) {
-        if (req.user.role === "student") {
-            res.sendFile(path.join(__dirname, "../views/student.html"));
+        try{
+            if (req.user.role === "student") {
+                res.sendFile(path.join(__dirname, "../views/student.html"));
+            }
+            else{
+                res.redirect("/")
+            }
         }
-        else{
+        catch{
             res.redirect("/")
         }
     });
 
     app.get("/admin", function(req, res) {
-        if (req.user.role === "admin") {
-            res.sendFile(path.join(__dirname, "../views/admin.html"));
+        try{
+            if (req.user.role === "admin") {
+                res.sendFile(path.join(__dirname, "../views/admin.html"));
+            }
+            else{
+                res.redirect("/")
+            }
         }
-        else{
+        catch{
             res.redirect("/")
         }
     });
 
     app.get("/tutor", function(req, res) {
-        if (req.user.role === "tutor") {
-            res.sendFile(path.join(__dirname, "../views/tutor.html"));
+        try{
+            if (req.user.role === "tutor") {
+                res.sendFile(path.join(__dirname, "../views/tutor.html"));
+            }
+            else{
+                res.redirect("/")
+            }
         }
-        else{
+        catch{
             res.redirect("/")
         }
     });
