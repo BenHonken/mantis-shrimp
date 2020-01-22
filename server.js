@@ -29,16 +29,15 @@ db.sequelize.sync().then(function() {
     });
 });
 
-// var mysql = require("mysql");
-// if (process.env.JAWSDB_URL) {
-//     connection = mysql.createConnection(process.env.JAWSDB_URL);
-// } 
-// else {
-//     var connection = mysql.createConnection({
-//         host: "localhost",
-//         port: 3306,
-//         user: "root",
-//         password: null,
-//         database: "tutordb"
-//     });
-// }
+var mysql = require("mysql");
+if (process.env.JAWSDB_URL) {
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    var connection = mysql.createConnection({
+        host: "localhost",
+        port: 3306,
+        user: "root",
+        password: null,
+        database: "tutordb"
+    });
+} 
