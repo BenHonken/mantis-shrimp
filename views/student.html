@@ -41,18 +41,49 @@
             <hr>
 
             <div class="row">
-                <div class="col-md-6">Your tutor is<span id="tutorName">to be assigned</span></div>
+                <div class="col-md-6">Your tutor is<span id="tutorName"> to be assigned.</span></div>
                 <div class="col-md-6">Hours Balance: <span id="hoursBalance"></span></div>
             </div>
 
-        </div>
-        <!--Jumbotron-->
-    </div>
-    <!--Container-->
+        </div><!--Jumbotron-->
+
+        <div class="jumbotron animated fadeIn">
+
+            <h2>Task List</h2>
+
+            <hr>
+
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-8">
+                <ul class="list-group todo-list">
+                  <li class="list-group-item new-item">
+                    <form id="todo-form">
+                      <div class="row">
+                        <div class="col-9">
+                          <input class="new-item form-control" id="todo" placeholder="Add tasks here." type="text" />
+                        </div>
+                        <div class="col-md-3 text-center">
+                          <input type="hidden" value="" name="userId" id="userIdTodo">
+                          <button type="submit" class="btn btn-primary">Add task</button>
+                        </div>
+                      </div>
+                    </form>
+                  </li>
+                  <span class="todo-container"></span>
+                </ul>
+              </div>
+              <div class="col-md-2"></div>
+            </div>
+
+        </div><!--Jumbotron-->
+
+    </div><!--Container-->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="/assets/js/routes.js"></script>
     <script src="/assets/js/student.js"></script>
+    <script src="/assets/js/task.js"></script>
 
 </body>
 
