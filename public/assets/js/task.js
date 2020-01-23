@@ -29,7 +29,7 @@ $(document).ready(function() {
 
   // This function grabs todos from the database and updates the view
   function getTodos() {
-    $.get("/api/todos", function(data) {
+    $.get("/api/todos/", function(data) {
       todos = data;
       initializeRows();
     });
@@ -103,7 +103,7 @@ $(document).ready(function() {
         todo.text,
         "</span>",
         "<input type='text' class='edit' style='display: none;'>",
-        "<button class='delete btn btn-danger'>X</button>",
+        "<button class='delete btn btn-danger'>x</button>",
         "<button class='complete btn btn-primary'>✓</button>",
         "</li>"
       ].join("")

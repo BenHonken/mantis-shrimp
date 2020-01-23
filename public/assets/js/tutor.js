@@ -9,7 +9,7 @@ $.get("/api/tutor_data").then(function(data) {
     $("#tutorsName").text(data.first_name + " " + data.last_name);
   });
 $.get("/api/get_student_names/").then(function(data) {
-    var studentHTML = "Students <br /><br />";
+    var studentHTML = "<h3><u>Your Students</u></h3>";
     var studentNameLogHTML = "";
     for(i=0; i<data.length; i++){
         studentHTML += data[i].first_name + " " + data[i].last_name + "<br />"
@@ -20,7 +20,7 @@ $.get("/api/get_student_names/").then(function(data) {
     $("#studentNameLog").html(studentNameLogHTML);
   });
 $.get("/api/get_student_hours").then(function(data) {
-    var hoursHTML = "Hours <br /><br />";
+    var hoursHTML = "<h3><u>Hours Balance</u></h3>";
     for(i=0; i<data.length; i++){
       hoursHTML += data[i].hours + " hours<br />";
       studentIdArray.push(data[i].id);
@@ -29,7 +29,7 @@ $.get("/api/get_student_hours").then(function(data) {
     $("#studentsHoursDiv").html(hoursHTML)
   });
 $.get("/api/get_my_tutor_logs").then(function(data) {
-    var tableHTML = "Logged Sessions <br /><br /><table><tr><th>Student</th><th>Date</th><th>Duration</th></tr>"
+    var tableHTML = "<br /><h3><u>Logged Sessions</u></h3><table><tr><th>Student</th><th>Date</th><th>Duration</th></tr>"
     for(i=0; i<data.length; i++){
         tableHTML += "<tr><td>" + data[i].student_name + "</td><td>" + data[i].date.substring(0,10) + "</td><td>" + data[i].duration + "</td></tr>"
     }
