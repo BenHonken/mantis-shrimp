@@ -254,7 +254,14 @@ module.exports = function(app) {
             return res.json(result);
         });
     })
-
+    app.put("/api/change_password/", function(req, res) {
+        let updateUser = {
+            password: req.body
+        }
+        db.Users.update(updateUser, { where: { id: req.user.id } }).then(function(result) {
+            return res.json(result);
+        });
+})
   // PUT route for updating todos. We can get the updated todo data from req.body
   app.put("/api/todos", function(req, res) {
     // Update takes in an object describing the properties we want to update, and
