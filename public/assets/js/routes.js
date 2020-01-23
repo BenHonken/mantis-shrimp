@@ -49,7 +49,7 @@ function goToHomepage() {
 };
 
 function logout() {
-    $.get("/logout");
+    $.get("/logout").then(window.location.replace("/"));
 };
 
 function goToProfile() {
