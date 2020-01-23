@@ -17,12 +17,8 @@ module.exports = function(app) {
 
     // Route for logging user out
     app.get("/logout", function(req, res) {
-        console.log("id1", req.user.id)
         req.logout();
-        req.session.destroy(function (err) { 
-            console.log("id2", req.user.id)
-            res.redirect('/');
-        });
+        req.session.destroy
         res.redirect('/');
 
     });
