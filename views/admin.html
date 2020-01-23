@@ -1,144 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script crossorigin="anonymous" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-    <script crossorigin="anonymous" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/animate.css" rel="stylesheet">
-    <title>MSTS - Administrator View</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="ie=edge" http-equiv="X-UA-Compatible">
+        <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+        <script crossorigin="anonymous" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script crossorigin="anonymous" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Poiret+One&display=swap" rel="stylesheet">
+        <link href="assets/css/style.css" rel="stylesheet">
+        <link href="assets/css/animate.css" rel="stylesheet">
+        <title>MSTS - Administrator View</title>
+    </head>
 
-<body>
+    <body>
 
-    <header>
-        <nav class="navbar">
-            <a class="navbar-brand" id="brand">Mantis Shrimp Tutoring Service
+        <header>
+            <nav class="navbar">
+                <a class="navbar-brand" id="brand">Mantis Shrimp Tutoring Service
                     <img alt="shrimp" class="img-responsive" id="shrimp" src="assets/images/shrimp.png"></a>
-            <ul class="nav float-right">
-                <li class="nav-item">
-                    <a class="nav-link" id="logout">Logout</a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-
-    <div class="container">
-
-        <div class="jumbotron">
-
-            <h2>Welcome, <span id="adminName"></span></h2>
-
-            <hr>
-
-            <div class="row">
-                <div class="col-md-12" id="allUsers">All Users</div>
-            </div>
-
-            <hr>
-
-            <h2>Tutor Logs</h2>
-
-            <div class="row">
-                <div class="col-md-12" id="allLogs">All Logs</div>
-            </div>
-        </div>
-
-
-        <div class="jumbotron animated fadeIn">
-
-            <h2>Task List</h2>
-
-            <hr>
-
-            <div class="row">
-              <div class="col-md-2"></div>
-              <div class="col-md-8">
-                <ul class="list-group todo-list">
-                  <li class="list-group-item new-item">
-                    <form id="todo-form">
-                      <div class="row">
-                        <div class="col-9">
-                          <input class="new-item form-control" id="todo" placeholder="Add tasks here." type="text" />
-                        </div>
-                        <div class="col-md-3 text-center">
-                          <input type="hidden" value="" name="userId" id="userIdTodo">
-                          <button type="submit" class="btn btn-primary">Add task</button>
-                        </div>
-                      </div>
-                    </form>
-                  </li>
-                  <span class="todo-container"></span>
+                <ul class="nav float-right">
+                    <li class="nav-item">
+                        <a class="nav-link" id="logout">Logout</a>
+                    </li>
                 </ul>
-              </div>
-              <div class="col-md-2"></div>
-            </div>
+            </nav>
+        </header>
 
-        </div><!--Jumbotron-->
+        <div class="container">
 
-    </div><!--Container-->
+            <div class="jumbotron">
 
-    <div aria-hidden="true" aria-labelledby="logModal" class="modal fade" id="userEdit" role="dialog" tabindex="-1">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="userEdit">What would you like to edit?</h5>
-                    <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
+                <div class="row">
+                    <div class="col-md-10">
+                        <h2>Welcome,
+                            <span id="adminName"></span>
+                        </h2>
+                    </div>
+                    <div class="col-md-2">
+                        <button class="btn btn-primary" data-target="#passwordChangeModal" data-toggle="modal" type="button">
+                            Change Password</button>
+
+                    </div>
+
                 </div>
-                <form id="adminLogs">
-                    <div class="modal-body">
-                        <div class="modal-body">
-                            <div class="form-group">
-                                <label for="passwordInput">ID</label>
-                                <input class="form-control" id="idLog" type="dateLog">
-                            </div>
-                            <div class="form-group">
-                                <label for="passwordInput">First Name</label>
-                                <input class="form-control" id="adminFirstName" type="durationLog">
-                            </div>
-                            <div class="form-group">
-                                <label for="passwordInput">Last Name</label>
-                                <input class="form-control" id="adminLastName" type="durationLog">
-                            </div>
-                            <div class="form-group">
-                                <label for="passwordInput">Email</label>
-                                <input class="form-control" id="adminEmail" type="durationLog">
-                            </div>
-                            <div class="form-group">
-                                <label for="passwordInput">Role</label>
-                                <input class="form-control" id="adminRole" type="durationLog">
-                            </div>
-                            <div class="form-group">
-                                <label for="passwordInput">Hours</label>
-                                <input class="form-control" id="adminHours" type="durationLog">
-                            </div>
-                            <div class="form-group">
-                                <label for="passwordInput">Tutor ID</label>
-                                <input class="form-control" id="adminTutorID" type="durationLog">
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
-                            <button class="btn btn-primary" type="submit">Submit</button>
-                        </div>
-                </form>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-12" id="allUsers">All Users</div>
+                </div>
+
+                <hr>
+
+                <h2>Tutor Logs</h2>
+
+                <div class="row">
+                    <div class="col-md-12" id="allLogs">All Logs</div>
                 </div>
             </div>
-        </div>
 
-        <script src="/assets/js/admin.js"></script>
-        <script src="/assets/js/task.js"></script>
-        <script src="/assets/js/routes.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-</body>
+            <div class="jumbotron animated fadeIn">
 
+                <h2>Task List</h2>
+
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-8">
+                        <ul class="list-group todo-list">
+                            <li class="list-group-item new-item">
+                                <form id="todo-form">
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <input class="new-item form-control" id="todo" placeholder="Add tasks here." type="text"/>
+                                        </div>
+                                        <div class="col-md-3 text-center">
+                                            <input id="userIdTodo" name="userId" type="hidden" value="">
+                                            <button class="btn btn-primary" type="submit">Add task</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
+                            <span class="todo-container"></span>
+                        </ul>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+
+            </div>
+            <!--Jumbotron-->
+
+            <!--Change Password Modal-->
+            <div aria-hidden="true" aria-labelledby="passwordModal" class="modal fade" id="passwordChangeModal" role="dialog" tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="userEdit">Please change your password.</h5>
+                            <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form id="passwordChange">
+                            <div class="modal-body">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="passwordInput">Email</label>
+                                        <input class="form-control" id="passwordChangeEmail" placeholder="Please confirm your email address.">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="passwordInput">Old Password</label>
+                                        <input class="form-control" id="oldPassword" placeholder="Please enter your old password.">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="passwordInput">New Password</label>
+                                        <input class="form-control" id="newPassword" placeholder="Please enter your new password.">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!--Container-->
+
+            <!--User Edit Modal-->
+            <div aria-hidden="true" aria-labelledby="logModal" class="modal fade" id="userEdit" role="dialog" tabindex="-1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="userEdit">What would you like to edit?</h5>
+                            <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <form id="adminLogs">
+                            <div class="modal-body">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <label for="passwordInput">ID</label>
+                                        <input class="form-control" id="idLog" type="dateLog">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="passwordInput">First Name</label>
+                                        <input class="form-control" id="adminFirstName" type="durationLog">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="passwordInput">Last Name</label>
+                                        <input class="form-control" id="adminLastName" type="durationLog">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="passwordInput">Email</label>
+                                        <input class="form-control" id="adminEmail" type="durationLog">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="passwordInput">Role</label>
+                                        <input class="form-control" id="adminRole" type="durationLog">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="passwordInput">Hours</label>
+                                        <input class="form-control" id="adminHours" type="durationLog">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="passwordInput">Tutor ID</label>
+                                        <input class="form-control" id="adminTutorID" type="durationLog">
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" data-dismiss="modal" type="button">Close</button>
+                                    <button class="btn btn-primary" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <script src="/assets/js/admin.js"></script>
+                <script src="/assets/js/task.js"></script>
+                <script src="/assets/js/routes.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+            </body>
+
+        </html>
+    </body>
 </html>
