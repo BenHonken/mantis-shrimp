@@ -103,7 +103,7 @@ function addToCart900() {
 
 storeButton.on("click", goToStore);
 homepageButton.on("click", goToHomepage);
-logoutButton.on("click", goToHomepage);
+logoutButton.on("click", logout);
 studentStore.on("click", goToStore);
 addCart50.on("click", addToCart50);
 addCart250.on("click", addToCart250);
