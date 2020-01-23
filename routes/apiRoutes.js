@@ -21,7 +21,7 @@ module.exports = function(app) {
         req.logout();
         req.session.destroy(function (err) { 
             console.log("id2", req.user.id)
-           // res.redirect('/'); 
+            res.redirect('/'); 
           });
 
     });
