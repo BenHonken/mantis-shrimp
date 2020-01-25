@@ -1,14 +1,14 @@
 {
     "development": {
         "username": "root",
-        "password": null,
+        "password": "rootroot",
         "database": "tutordb",
         "host": "localhost",
         "dialect": "mysql"
     },
     "test": {
         "username": "root",
-        "password": "Rootpassword",
+        "password": "rootroot",
         "database": "tutordb",
         "host": "localhost",
         "dialect": "mysql",
