@@ -112,6 +112,10 @@ hr {
     color: black;
 }
 
+#passwordChangeModal {
+    color: black;
+}
+
 a:link {
     color: white;
 }
