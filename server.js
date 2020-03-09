@@ -3,6 +3,8 @@ var express = require("express");
 var session = require("express-session");
 // Requiring passport as we've configured it
 var passport = require("./config/passport");
+var compression = require('compression')
+
 
 // Setting up port and requiring models for syncing
 var PORT = process.env.PORT || 8080;
@@ -17,6 +19,8 @@ app.use(express.static("public"));
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use(compression());
 
 // Requiring our routes
 require("./routes/htmlRoutes.js")(app);
@@ -37,7 +41,7 @@ if (process.env.JAWSDB_URL) {
         host: "localhost",
         port: 3306,
         user: "root",
-        password: null,
+        password: "rootroot",
         database: "tutordb"
     });
 }

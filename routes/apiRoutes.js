@@ -18,10 +18,10 @@ module.exports = function(app) {
     // Route for logging user out
     app.get("/logout", function(req, res) {
         req.logout();
-        res.redirect("/");
+        req.session.destroy
+        res.redirect('/');
+
     });
-
-
 
     // GET ROUTES
     app.get("/api/user/", function(req, res) {
@@ -140,6 +140,15 @@ module.exports = function(app) {
         });
     });
 
+  // GET route for getting all of the todos
+  app.get("/api/todos", function(req, res) {
+    // findAll returns all entries for a table when used with no options
+    db.Todo.findAll({}).then(function(dbTodo) {
+      // We have access to the todos as an argument inside of the callback function
+      res.json(dbTodo);
+    });
+  });
+
     // POST ROUTES
     app.post("/api/profile", function(req, res) {
         db.Users.create(req.body).then(function(response) {
@@ -176,12 +185,42 @@ module.exports = function(app) {
             res.json(dbLogs);
         });
     });
+
+      // POST route for saving a new todo
+  app.post("/api/todos", function(req, res) {
+    // create takes an argument of an object describing the item we want to
+    // insert into our table. In this case we just we pass in an object with a text
+    // and complete property
+    db.Todo.create({
+      text: req.body.text,
+      complete: req.body.complete
+    }).then(function(dbTodo) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(dbTodo);
+    });
+  });
+
     // DELETE ROUTES
     app.delete("/api/delete_user_by_id/:id", function(req, res) {
         db.Users.destroy({ where: { id: req.params.id } }).then(function(dbUsers) {
             res.json(dbUsers);
         });
     });
+
+  // DELETE route for deleting todos. We can get the id of the todo to be deleted from
+  // req.params.id
+  app.delete("/api/todos/:id", function(req, res) {
+    // We just have to specify which todo we want to destroy with "where"
+    db.Todo.destroy({
+      where: {
+        id: req.params.id
+      }
+    }).then(function(dbTodo) {
+      res.json(dbTodo);
+    });
+
+  });
+
     // UPDATE ROUTES
     app.put("/api/student_hours/", function(req, res) {
         console.log("student hours route hit");
@@ -207,7 +246,7 @@ module.exports = function(app) {
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             email: req.body.email,
-            roles: req.body.roles,
+            role: req.body.role,
             hours: req.body.hours,
             tutor_id: req.body.tutor_id
         }
@@ -215,4 +254,28 @@ module.exports = function(app) {
             return res.json(result);
         });
     })
+    app.put("/api/change_password/", function(req, res) {
+        let updateUser = {
+            password: req.body
+        }
+        db.Users.update(updateUser, { where: { id: req.user.id } }).then(function(result) {
+            return res.json(result);
+        });
+})
+  // PUT route for updating todos. We can get the updated todo data from req.body
+  app.put("/api/todos", function(req, res) {
+    // Update takes in an object describing the properties we want to update, and
+    // we use where to describe which objects we want to update
+    db.Todo.update({
+      text: req.body.text,
+      complete: req.body.complete
+    }, {
+      where: {
+        id: req.body.id
+      }
+    }).then(function(dbTodo) {
+      res.json(dbTodo);
+    });
+  });
+
 };

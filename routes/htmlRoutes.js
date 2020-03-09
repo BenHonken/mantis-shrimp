@@ -18,46 +18,59 @@ module.exports = function(app) {
     app.get("/profile", function(req, res) {
         console.log(req.user.role)
         if (db.Users.role === "student") {
-            res.sendFile(path.join(__dirname, "../views/student.html"));
+            res.redirect("/student");
         } else if (db.Users.role === "tutor") {
-            res.sendFile(path.join(__dirname, "../views/tutor.html"));
+            res.redirect("/tutor");
         } else if (db.Users.role === "admin") {
-            res.sendFile(path.join(__dirname, "../views/admin.html"));
-        } else {
-            res.sendFile(path.join(__dirname, "../views/index.html"))
+            res.redirect("/admin");
+        }
+        else{
+            res.redirect("/")
         }
 
 
     });
 
     app.get("/student", function(req, res) {
-        console.log(req.user.role)
-        if (req.user.role === "student") {
-            console.log(req.user.role)
-
-            res.sendFile(path.join(__dirname, "../views/student.html"));
-        } else {
-            res.sendFile(path.join(__dirname, "../views/index.html"))
+        try{
+            if (req.user.role === "student") {
+                res.sendFile(path.join(__dirname, "../views/student.html"));
+            }
+            else{
+                res.redirect("/")
+            }
+        }
+        catch{
+            res.redirect("/")
         }
     });
 
     app.get("/admin", function(req, res) {
-
-        res.sendFile(path.join(__dirname, "../views/admin.html"));
-    });
-
-    app.get("/tutor", function(req, res) {
-        console.log(req.user.role)
-
-        if (req.user.role === "tutor") {
-            res.sendFile(path.join(__dirname, "../views/tutor.html"));
-        } else {
-            res.sendFile(path.join(__dirname, "../views/index.html"))
+        try{
+            if (req.user.role === "admin") {
+                res.sendFile(path.join(__dirname, "../views/admin.html"));
+            }
+            else{
+                res.redirect("/")
+            }
+        }
+        catch{
+            res.redirect("/")
         }
     });
 
-    // app.get("/student", isAuthenticated, function(req, res) {
-    //     res.sendFile(path.join(__dirname, "../views/index.html"));
-    // });
+    app.get("/tutor", function(req, res) {
+        try{
+            if (req.user.role === "tutor") {
+                res.sendFile(path.join(__dirname, "../views/tutor.html"));
+            }
+            else{
+                res.redirect("/")
+            }
+        }
+        catch{
+            res.redirect("/")
+        }
+    });
 
 };

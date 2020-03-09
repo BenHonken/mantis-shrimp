@@ -1,5 +1,5 @@
 body {
-    background-image: url(../images/main.png);
+    background-image: url('../images/main.png');
     background-attachment: fixed;
     font-family: 'Poiret One', cursive;
     font-size: 24px;
@@ -13,7 +13,7 @@ h2 {
     font-size: 36px;
 }
 
-th{
+th {
     padding: 15px;
     text-decoration: underline;
 }
@@ -36,6 +36,15 @@ tr {
 }
 
 #kyle {
+    height: 300px;
+    width: 300px;
+    float: left;
+    margin-right: 25px;
+    border-radius: 25px;
+    border: 1px solid white;
+}
+
+#ben {
     height: 300px;
     width: 300px;
     float: left;
@@ -103,6 +112,10 @@ hr {
     color: black;
 }
 
+#passwordChangeModal {
+    color: black;
+}
+
 a:link {
     color: white;
 }
@@ -117,4 +130,23 @@ a:hover {
 
 a:active {
     color: white;
+}
+
+input.new-item:focus {
+    outline: none;
+}
+
+.list-group-item > button.delete,
+.list-group-item > button.complete {
+    float: right;
+    height: 25px;
+    margin-left: 5px;
+}
+
+.edit {
+    width: 100%;
+}
+
+.list-group-item {
+    background-color: darkslategray;
 }
