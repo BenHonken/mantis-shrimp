@@ -16,14 +16,14 @@ module.exports = function(app) {
     });
 
     app.get("/profile", function(req, res) {
+        console.log(req.user.role)
         if (db.Users.role === "student") {
             res.sendFile(path.join(__dirname, "../views/student.html"));
         } else if (db.Users.role === "tutor") {
             res.sendFile(path.join(__dirname, "../views/tutor.html"));
         } else if (db.Users.role === "admin") {
             res.sendFile(path.join(__dirname, "../views/admin.html"));
-        }
-        else{
+        } else {
             res.sendFile(path.join(__dirname, "../views/index.html"))
         }
 
@@ -31,10 +31,12 @@ module.exports = function(app) {
     });
 
     app.get("/student", function(req, res) {
+        console.log(req.user.role)
         if (req.user.role === "student") {
+            console.log(req.user.role)
+
             res.sendFile(path.join(__dirname, "../views/student.html"));
-        }
-        else{
+        } else {
             res.sendFile(path.join(__dirname, "../views/index.html"))
         }
     });
@@ -45,10 +47,11 @@ module.exports = function(app) {
     });
 
     app.get("/tutor", function(req, res) {
+        console.log(req.user.role)
+
         if (req.user.role === "tutor") {
             res.sendFile(path.join(__dirname, "../views/tutor.html"));
-        }
-        else{
+        } else {
             res.sendFile(path.join(__dirname, "../views/index.html"))
         }
     });

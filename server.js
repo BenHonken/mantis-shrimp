@@ -41,3 +41,5 @@ if (process.env.JAWSDB_URL) {
         database: "tutordb"
     });
 }
+var compression = require('compression')
+app.use(compression({ filter: shouldCompress }))
